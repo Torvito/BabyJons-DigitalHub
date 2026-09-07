@@ -1,0 +1,6 @@
+{
+  "name": "Baby Jons — Digital Hub & Client OS",
+  "description": "Digital Hub, Portafolio Creativo, Cotizador Interactivo y Sistema Operativo de Clientes para Baby Jons en Nicaragua.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
