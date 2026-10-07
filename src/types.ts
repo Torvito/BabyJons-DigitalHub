@@ -18,7 +18,7 @@ export interface PortfolioItem {
 export interface CalcService {
   id: string;
   title: string;
-  priceUsd: number;
+  priceEur: number;
   desc: string;
   features: string[];
   badge?: string;

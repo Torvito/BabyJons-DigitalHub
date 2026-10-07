@@ -1,17 +1,17 @@
 import { PortfolioItem, CalcService, SpeedConfig, ClientProject, LeadItem } from '../types';
 
-export const USD_TO_NIO = 36.60;
-export const WA_PHONE_BABY_JONS = '50587669631';
+export const WA_PHONE_BABY_JONS = '34631920479';
+export const ADMIN_PIN = '2026';
 
 export const INITIAL_PORTFOLIO: PortfolioItem[] = [
   {
     id: 1,
-    title: 'MetroFit Gym Nicaragua',
+    title: 'MetroFit Gym Zaragoza',
     category: 'branding',
     categoryLabel: 'Branding & Identidad',
     image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80',
-    desc: 'Línea gráfica completa, manual de marca, diseño de uniformes y estrategia de contenido visual para inauguración de sede deportiva premium.',
-    client: 'MetroFit Gym S.A.',
+    desc: 'Línea gráfica completa, manual de marca, diseño de uniformes y estrategia de contenido visual para inauguración de sede deportiva premium en Zaragoza.',
+    client: 'MetroFit Gym Zaragoza S.L.',
     deliverables: ['Manual de Marca PDF (40 págs)', 'Logos Vectoriales (SVG, AI, PNG)', 'Kit de Redes Sociales (15 plantillas)', 'Señalética interior'],
     results: '+320 membresías prevendidas en mes 1',
     year: '2026'
@@ -22,20 +22,20 @@ export const INITIAL_PORTFOLIO: PortfolioItem[] = [
     category: 'web',
     categoryLabel: 'Web App PWA',
     image: 'https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=800&q=80',
-    desc: 'Catálogo digital interactivo e-commerce con checkout directo a WhatsApp, sincronización de stock y panel administrativo para pedidos locales en Managua.',
-    client: 'Leggero Shoes Nicaragua',
-    deliverables: ['Web App PWA instalable', 'Integración WhatsApp Business API', 'Dashboard de Inventario', 'Pasarela de pagos locales'],
+    desc: 'Catálogo digital interactivo e-commerce con checkout directo a WhatsApp, sincronización de stock y panel administrativo para pedidos en Zaragoza y envíos peninsulares.',
+    client: 'Leggero Shoes Zaragoza',
+    deliverables: ['Web App PWA instalable', 'Integración WhatsApp Business API', 'Dashboard de Inventario', 'Pasarela de pagos y Bizum'],
     results: '4.8x aumento en conversión de leads a ventas',
     year: '2026'
   },
   {
     id: 3,
-    title: 'Campaña Moda "Urbano 505"',
+    title: 'Campaña Moda "Urbano ZGZ"',
     category: 'media',
     categoryLabel: 'Audiovisual & Reels',
     image: 'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80',
-    desc: 'Dirección creativa y producción audiovisual de 12 Reels virales con modelos y locaciones urbanas para nueva colección de streetwear nicaragüense.',
-    client: 'Urbano 505 Apparel',
+    desc: 'Dirección creativa y producción audiovisual de 12 Reels virales con modelos y locaciones urbanas para nueva colección de streetwear en Zaragoza.',
+    client: 'Urbano ZGZ Apparel',
     deliverables: ['12 Reels en 4K (Edición y Color)', 'Sesión fotográfica de estudio (45 fotos)', 'Audio branding personalizado', 'Estrategia de pauta TikTok/IG'],
     results: '1.4M+ de reproducciones orgánicas en TikTok e IG',
     year: '2026'
@@ -46,9 +46,9 @@ export const INITIAL_PORTFOLIO: PortfolioItem[] = [
     category: 'web',
     categoryLabel: 'Web App Citas',
     image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80',
-    desc: 'Plataforma web ágil para agendamiento de consultas odontológicas, recordatorios automatizados y catálogo de tratamientos con testimonios.',
-    client: 'Dra. Karen Mendoza',
-    deliverables: ['Web Responsive Ultrarrápida', 'Sistema de Agendamiento Online', 'Ficha clínica digital preliminar', 'Google Business Optimization'],
+    desc: 'Plataforma web ágil para agendamiento de consultas odontológicas en Zaragoza, recordatorios automatizados y catálogo de tratamientos.',
+    client: 'Dra. Karen Mendoza - Clínica Sonrisas',
+    deliverables: ['Web Responsive Ultrarrápida', 'Sistema de Agendamiento Online', 'Ficha clínica digital preliminar', 'Google Business & SEO Local'],
     results: '+65 nuevas citas mensuales agendadas',
     year: '2026'
   },
@@ -58,22 +58,22 @@ export const INITIAL_PORTFOLIO: PortfolioItem[] = [
     category: 'branding',
     categoryLabel: 'Branding & Espacio',
     image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80',
-    desc: 'Identidad de marca premium vintage-moderna, menú digital de servicios, señalética luminosa y packaging para línea de cera y aceites de barba.',
-    client: 'El Patrón Gentlemen Studio',
+    desc: 'Identidad de marca premium vintage-moderna, menú digital de servicios, señalética luminosa y packaging para línea de cera y aceites de barba en Zaragoza.',
+    client: 'El Patrón Gentlemen Studio Zaragoza',
     deliverables: ['Logotipo principal y monograma', 'Diseño de etiquetas para cosméticos', 'Carta digital interactiva QR', 'Branding de interiores'],
-    results: 'Apertura de segunda sucursal en Granada',
+    results: 'Apertura de segundo local en Zaragoza centro',
     year: '2025'
   },
   {
     id: 6,
-    title: 'Café Montaña Matagalpa',
+    title: 'Café de Especialidad Aragón',
     category: 'media',
     categoryLabel: 'Audiovisual & Packaging',
     image: 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=800&q=80',
-    desc: 'Documental corto de marca sobre el proceso de cosecha artesanal de café especial en Matagalpa y rediseño de empaques para exportación.',
-    client: 'Hacienda El Mirador',
-    deliverables: ['Video Hero 4K para ferias internacionales', 'Diseño de bolsas ecológicas con válvula', 'Guion y locución profesional', 'Banco de fotos comerciales'],
-    results: 'Contrato cerrado con distribuidores en Costa Rica y Miami',
+    desc: 'Documental corto de marca sobre el proceso de tostado artesanal de café de especialidad y rediseño de empaques para distribución regional.',
+    client: 'Tostaduría Aragón',
+    deliverables: ['Video Hero 4K para ferias comerciales', 'Diseño de bolsas ecológicas con válvula', 'Guion y locución profesional', 'Banco de fotos comerciales'],
+    results: 'Distribución ampliada en cafeterías de Zaragoza y Madrid',
     year: '2025'
   }
 ];
@@ -82,7 +82,7 @@ export const INITIAL_CALC_SERVICES: CalcService[] = [
   {
     id: 'brand',
     title: 'Identidad de Marca & Manual',
-    priceUsd: 250,
+    priceEur: 250,
     desc: 'Concepto estratégico, logotipo vectorial, paleta de colores, tipografías corporativas y manual de uso.',
     features: ['Logo en AI, SVG, PNG alta resolución', 'Paleta cromática y códigos HEX/CMYK', 'Manual de marca en PDF', 'Plantillas para post y stories'],
     badge: 'Popular'
@@ -90,7 +90,7 @@ export const INITIAL_CALC_SERVICES: CalcService[] = [
   {
     id: 'pwa',
     title: 'Web App / Catálogo PWA',
-    priceUsd: 350,
+    priceEur: 350,
     desc: 'Aplicación web optimizada para móvil con catálogo interactivo y checkout directo a tu WhatsApp.',
     features: ['Diseño responsive y ultrarrápido', 'Botón de pedido automatizado a WhatsApp', 'Panel de administración sencillo', 'Dominio y hosting guiado'],
     badge: 'Alta Conversión'
@@ -98,14 +98,14 @@ export const INITIAL_CALC_SERVICES: CalcService[] = [
   {
     id: 'reels',
     title: 'Pack Audiovisual (8 Reels)',
-    priceUsd: 200,
+    priceEur: 200,
     desc: 'Producción, guion, grabación y edición vertical cinematográfica de 8 videos cortos para TikTok e Instagram.',
     features: ['Guion con ganchos virales (Hooks)', 'Edición dinámica con subtítulos animados', 'Efectos de sonido y musicalización', 'Entrega en formato 9:16 listo para publicar'],
   },
   {
     id: 'retainer',
     title: 'Retainer Mensual Creativo',
-    priceUsd: 150,
+    priceEur: 150,
     desc: 'Acompañamiento continuo de diseño mensual para negocios que necesitan contenido y ajustes gráficos frecuentes.',
     features: ['12 piezas gráficas mensuales', 'Ajustes prioritarios en 24h', 'Asesoría estratégica semanal por WhatsApp', 'Descuento en proyectos adicionales'],
     badge: 'Recomendado'
@@ -113,7 +113,7 @@ export const INITIAL_CALC_SERVICES: CalcService[] = [
   {
     id: 'strategy',
     title: 'Lanzamiento & Campaña Digital',
-    priceUsd: 180,
+    priceEur: 180,
     desc: 'Estrategia de contenido y configuración de campañas publicitarias para lanzamiento de producto o negocio.',
     features: ['Investigación de competencia', 'Estructura de embudo de ventas', 'Copywriting persuasivo para anuncios', 'Segmentación de audiencias Meta Ads']
   }
@@ -149,7 +149,7 @@ export const INITIAL_PROJECTS: Record<string, ClientProject> = {
     code: 'PRJ-101',
     tag: 'Pro-101: MetroFit Gym',
     title: 'MetroFit Gym — Rediseño de Marca & Contenido',
-    clientName: 'MetroFit Gym Nicaragua',
+    clientName: 'MetroFit Gym Zaragoza',
     status: 'En Proceso (Fase 3 de 4)',
     progress: 75,
     totalCost: 650,
@@ -158,7 +158,7 @@ export const INITIAL_PROJECTS: Record<string, ClientProject> = {
     startDate: '12 Ago 2026',
     estimatedDelivery: '15 Sep 2026',
     milestones: [
-      { id: 'm1', title: 'Briefing estratégico & Moodboard conceptual', done: true, date: '12 Ago 2026', notes: 'Aprobado por junta directiva' },
+      { id: 'm1', title: 'Briefing estratégico & Moodboard conceptual', done: true, date: '12 Ago 2026', notes: 'Aprobado por equipo directivo' },
       { id: 'm2', title: 'Propuestas de Logotipo & Guía cromática', done: true, date: '20 Ago 2026', notes: 'Seleccionada opción 2 con ajustes menores' },
       { id: 'm3', title: 'Diseño de Piezas Sociales & Plantillas Canva/AI', done: true, date: '28 Ago 2026', notes: '15 plantillas listas en bóveda' },
       { id: 'm4', title: 'Entrega final de Bóveda & Manual de Marca', done: false, date: '15 Sep 2026', notes: 'En proceso de diagramación final' }
@@ -221,17 +221,26 @@ export const INITIAL_PROJECTS: Record<string, ClientProject> = {
 };
 
 export const INITIAL_LEADS: LeadItem[] = [
-  { id: 1, client: 'RestoBar La Esquina (Granada)', service: 'Branding + Menú Digital QR', budget: 350, phone: '+505 8899 1122', stage: 1, date: 'Hoy' },
-  { id: 2, client: 'Boutique D’Ella (Managua)', service: 'Pack 8 Reels de Moda', budget: 200, phone: '+505 8777 3344', stage: 1, date: 'Ayer' },
-  { id: 3, client: 'AutoDetailing Pro 505', service: 'Web App PWA Catálogo', budget: 400, phone: '+505 8555 9900', stage: 2, date: '04 Sep' },
-  { id: 4, client: 'Dr. Alejandro Rivas Odontología', service: 'Identidad de Marca & Logo', budget: 250, phone: '+505 8222 4455', stage: 2, date: '03 Sep' },
-  { id: 5, client: 'MetroFit Gym', service: 'Branding & Social Media', budget: 650, phone: '+505 8333 1100', stage: 3, date: 'Activo' },
-  { id: 6, client: 'Clínica Sonrisas', service: 'Web App Citas Médicas', budget: 450, phone: '+505 8444 2211', stage: 3, date: 'Activo' },
-  { id: 7, client: 'Leggero Sneakers', service: 'Campaña Video Drop', budget: 380, phone: '+505 8766 9631', stage: 4, date: 'Finalizado' }
+  { id: 1, client: 'RestoBar El Tubo (Zaragoza)', service: 'Branding + Menú Digital QR', budget: 350, phone: '+34 611 22 33 44', stage: 1, date: 'Hoy' },
+  { id: 2, client: 'Boutique D’Ella (Zaragoza)', service: 'Pack 8 Reels de Moda', budget: 200, phone: '+34 622 33 44 55', stage: 1, date: 'Ayer' },
+  { id: 3, client: 'AutoDetailing Pro Zaragoza', service: 'Web App PWA Catálogo', budget: 400, phone: '+34 633 44 55 66', stage: 2, date: '04 Sep' },
+  { id: 4, client: 'Dr. Alejandro Rivas Odontología', service: 'Identidad de Marca & Logo', budget: 250, phone: '+34 644 55 66 77', stage: 2, date: '03 Sep' },
+  { id: 5, client: 'MetroFit Gym Zaragoza', service: 'Branding & Social Media', budget: 650, phone: '+34 655 66 77 88', stage: 3, date: 'Activo' },
+  { id: 6, client: 'Clínica Sonrisas', service: 'Web App Citas Médicas', budget: 450, phone: '+34 666 77 88 99', stage: 3, date: 'Activo' },
+  { id: 7, client: 'Leggero Sneakers', service: 'Campaña Video Drop', budget: 380, phone: '+34 631 92 04 79', stage: 4, date: 'Finalizado' }
 ];
 
 export const BANK_TRANSFER_INFO = [
-  { bank: 'BAC Credomatic Nicaragua', accountUsd: '365-98214-0 (USD)', accountNio: '365-98214-1 (NIO)', beneficiary: 'Baby Jons - Creative Studio' },
-  { bank: 'Banco LaFise Bancentro', accountUsd: '109-234567-8 (USD)', accountNio: '109-234567-9 (NIO)', beneficiary: 'Baby Jons - Creative Studio' },
-  { bank: 'Billetera Móvil / KASH', accountUsd: '+505 8766 9631', accountNio: 'Transferencia móvil inmediata', beneficiary: 'Baby Jons' }
+  { 
+    bank: 'Cuenta Bancaria España (IBAN)', 
+    iban: 'ES00 0000 0000 0000 0000 0000 (pendiente de confirmar)', 
+    bic: 'ESXX (pendiente)',
+    beneficiary: 'Baby Jons / Vos con Voz - Zaragoza' 
+  },
+  { 
+    bank: 'Bizum Profesional', 
+    iban: '+34 631 920 479 (Concepto: Nombre de tu proyecto)', 
+    bic: 'Pago Inmediato',
+    beneficiary: 'Baby Jons' 
+  }
 ];

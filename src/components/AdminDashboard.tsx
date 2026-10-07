@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { LeadItem, LeadStage } from '../types';
-import { USD_TO_NIO, WA_PHONE_BABY_JONS } from '../data/initialData';
-import { Wallet, FolderKanban, Clock, Filter, Plus, ChevronLeft, ChevronRight, MessageSquare, Trash2, X, TrendingUp, DollarSign } from 'lucide-react';
+import { WA_PHONE_BABY_JONS } from '../data/initialData';
+import { Wallet, FolderKanban, Clock, Filter, Plus, ChevronLeft, ChevronRight, MessageSquare, Trash2, X, TrendingUp } from 'lucide-react';
 
 interface AdminDashboardProps {
   leads: LeadItem[];
@@ -13,13 +13,13 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ leads, setLeads 
   const [newClientName, setNewClientName] = useState<string>('');
   const [newService, setNewService] = useState<string>('');
   const [newBudget, setNewBudget] = useState<string>('');
-  const [newPhone, setNewPhone] = useState<string>('+505 ');
+  const [newPhone, setNewPhone] = useState<string>('+34 ');
 
   // Calculate live KPI metrics based on leads and projects
   const activeInDevCount = leads.filter(l => l.stage === 3).length;
   const completedLeads = leads.filter(l => l.stage === 4);
-  const totalCompletedEarnings = 1850 + completedLeads.reduce((acc, l) => acc + (l.budget || 0), 0);
-  const pendingReceivable = leads.filter(l => l.stage === 3).reduce((acc, l) => acc + (l.budget ? Math.round(l.budget * 0.5) : 0), 325);
+  const totalCompletedEarnings = 2250 + completedLeads.reduce((acc, l) => acc + (l.budget || 0), 0);
+  const pendingReceivable = leads.filter(l => l.stage === 3).reduce((acc, l) => acc + (l.budget ? Math.round(l.budget * 0.5) : 0), 380);
   const pipelineLeadsCount = leads.filter(l => l.stage === 1 || l.stage === 2).length;
 
   const moveLeadStage = (id: number, newStage: LeadStage) => {
@@ -42,7 +42,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ leads, setLeads 
       client: newClientName.trim(),
       service: newService.trim(),
       budget: budgetNum,
-      phone: newPhone.trim() || '+505 8766 9631',
+      phone: newPhone.trim() || '+34 631 920 479',
       stage: 1,
       date: 'Hoy'
     };
@@ -54,7 +54,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ leads, setLeads 
     setNewClientName('');
     setNewService('');
     setNewBudget('');
-    setNewPhone('+505 ');
+    setNewPhone('+34 ');
   };
 
   const COLUMNS: { stage: LeadStage; title: string; color: string }[] = [
@@ -75,12 +75,11 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ leads, setLeads 
             <Wallet className="w-4 h-4 text-emerald-400" />
           </div>
           <div className="flex items-baseline gap-2">
-            <span className="text-2xl font-black text-white">${totalCompletedEarnings.toLocaleString()}</span>
-            <span className="text-xs text-slate-400">USD</span>
+            <span className="text-2xl font-black text-white">{totalCompletedEarnings.toLocaleString()} €</span>
           </div>
           <p className="text-[10px] text-emerald-400 font-medium flex items-center gap-1">
             <TrendingUp className="w-3 h-3" />
-            <span>~C$ {Math.round(totalCompletedEarnings * USD_TO_NIO).toLocaleString()} NIO (+24% vs mes anterior)</span>
+            <span>+24% vs mes anterior • Facturación Zaragoza</span>
           </p>
         </div>
 
@@ -94,7 +93,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ leads, setLeads 
             <span className="text-xs text-slate-400">en desarrollo</span>
           </div>
           <p className="text-[10px] text-indigo-300 font-medium">
-            3 clientes en retainer mensual activo
+            3 marcas con retainer mensual activo
           </p>
         </div>
 
@@ -104,8 +103,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ leads, setLeads 
             <Clock className="w-4 h-4 text-amber-400" />
           </div>
           <div className="flex items-baseline gap-2">
-            <span className="text-2xl font-black text-amber-400">${pendingReceivable.toLocaleString()}</span>
-            <span className="text-xs text-slate-400">USD</span>
+            <span className="text-2xl font-black text-amber-400">{pendingReceivable.toLocaleString()} €</span>
           </div>
           <p className="text-[10px] text-amber-300 font-medium">
             Entregas finales programadas este mes
@@ -137,7 +135,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ leads, setLeads 
               Embudo de Clientes & Proyectos (Kanban)
             </h3>
             <p className="text-xs text-slate-400 mt-0.5">
-              Controla y avanza el estado de cada solicitud de clientes en Nicaragua.
+              Controla y avanza el estado de cada solicitud de clientes en Zaragoza y España.
             </p>
           </div>
 
@@ -190,7 +188,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ leads, setLeads 
                                 {item.client}
                               </h4>
                               <span className="text-[11px] font-black text-amber-400">
-                                ${item.budget} USD
+                                {item.budget} €
                               </span>
                             </div>
 
@@ -249,7 +247,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ leads, setLeads 
 
                 <div className="pt-2 border-t border-slate-900 text-center">
                   <span className="text-[10px] text-slate-500 font-semibold">
-                    Total etapa: ${items.reduce((acc, curr) => acc + curr.budget, 0)} USD
+                    Total etapa: {items.reduce((acc, curr) => acc + curr.budget, 0)} €
                   </span>
                 </div>
 
@@ -285,7 +283,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ leads, setLeads 
                   required
                   value={newClientName}
                   onChange={(e) => setNewClientName(e.target.value)}
-                  placeholder="Ej: RestoBar El Portal / Boutique Bella"
+                  placeholder="Ej: RestoBar El Tubo / Boutique Bella"
                   className="w-full bg-slate-950 border border-slate-700 rounded-xl p-2.5 text-white focus:outline-none focus:border-indigo-500"
                 />
               </div>
@@ -306,7 +304,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ leads, setLeads 
 
               <div>
                 <label className="text-slate-300 font-semibold block mb-1">
-                  Monto Cotizado ($USD):
+                  Monto Cotizado (€):
                 </label>
                 <input
                   type="number"
@@ -325,7 +323,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ leads, setLeads 
                   type="text"
                   value={newPhone}
                   onChange={(e) => setNewPhone(e.target.value)}
-                  placeholder="+505 8888 8888"
+                  placeholder="+34 600 000 000"
                   className="w-full bg-slate-950 border border-slate-700 rounded-xl p-2.5 text-white focus:outline-none focus:border-indigo-500"
                 />
               </div>

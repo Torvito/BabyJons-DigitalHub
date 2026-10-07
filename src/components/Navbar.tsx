@@ -26,7 +26,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeView, setActiveView }) => 
                   src="/baby-jons-portrait.jpg" 
                   alt="Baby Jons" 
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-[25%_30%]"
+                  style={{ objectPosition: '25% 30%' }}
                   onError={(e) => {
                     // Fallback to text initials if image is not loaded
                     const target = e.target as HTMLElement;
@@ -48,7 +49,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeView, setActiveView }) => 
                 </span>
               </div>
               <p className="text-[11px] text-slate-400 font-medium">
-                Creative Director & Visual Strategist • Nicaragua
+                Creative Director & Visual Strategist • Zaragoza, España
               </p>
             </div>
           </div>
@@ -58,7 +59,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeView, setActiveView }) => 
             <button
               onClick={() => setActiveView('public')}
               id="nav-btn-public"
-              className={`text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-2 ${
+              className={`text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-2 cursor-pointer ${
                 activeView === 'public'
                   ? 'bg-indigo-600 text-white shadow-md shadow-indigo-950'
                   : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
@@ -71,7 +72,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeView, setActiveView }) => 
             <button
               onClick={() => setActiveView('portal')}
               id="nav-btn-portal"
-              className={`text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-2 ${
+              className={`text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-2 cursor-pointer ${
                 activeView === 'portal'
                   ? 'bg-indigo-600 text-white shadow-md shadow-indigo-950'
                   : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
@@ -79,19 +80,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activeView, setActiveView }) => 
             >
               <UserCheck className="w-3.5 h-3.5" />
               <span>Portal Clientes</span>
-            </button>
-
-            <button
-              onClick={() => setActiveView('admin')}
-              id="nav-btn-admin"
-              className={`text-xs font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-2 ${
-                activeView === 'admin'
-                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-950'
-                  : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
-              }`}
-            >
-              <LayoutDashboard className="w-3.5 h-3.5" />
-              <span>Dashboard Baby Jons</span>
             </button>
           </nav>
 
@@ -115,7 +103,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeView, setActiveView }) => 
           <button
             onClick={() => setActiveView('public')}
             id="mobile-nav-public"
-            className={`flex flex-col items-center gap-1 py-1 px-3 rounded-lg transition ${
+            className={`flex flex-col items-center gap-1 py-1 px-4 rounded-lg transition ${
               activeView === 'public' ? 'text-indigo-400 font-bold bg-indigo-950/40' : 'text-slate-400'
             }`}
           >
@@ -125,22 +113,12 @@ export const Navbar: React.FC<NavbarProps> = ({ activeView, setActiveView }) => 
           <button
             onClick={() => setActiveView('portal')}
             id="mobile-nav-portal"
-            className={`flex flex-col items-center gap-1 py-1 px-3 rounded-lg transition ${
+            className={`flex flex-col items-center gap-1 py-1 px-4 rounded-lg transition ${
               activeView === 'portal' ? 'text-indigo-400 font-bold bg-indigo-950/40' : 'text-slate-400'
             }`}
           >
             <UserCheck className="w-4 h-4" />
             <span className="text-[10px]">Portal Cliente</span>
-          </button>
-          <button
-            onClick={() => setActiveView('admin')}
-            id="mobile-nav-admin"
-            className={`flex flex-col items-center gap-1 py-1 px-3 rounded-lg transition ${
-              activeView === 'admin' ? 'text-indigo-400 font-bold bg-indigo-950/40' : 'text-slate-400'
-            }`}
-          >
-            <LayoutDashboard className="w-4 h-4" />
-            <span className="text-[10px]">Dashboard</span>
           </button>
         </div>
       </div>

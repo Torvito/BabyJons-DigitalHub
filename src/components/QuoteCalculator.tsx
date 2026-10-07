@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { SpeedOption } from '../types';
-import { INITIAL_CALC_SERVICES, SPEED_OPTIONS, USD_TO_NIO, WA_PHONE_BABY_JONS } from '../data/initialData';
+import { INITIAL_CALC_SERVICES, SPEED_OPTIONS, WA_PHONE_BABY_JONS } from '../data/initialData';
 import { Coins, Check, MessageSquare, Clock, ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -17,18 +17,16 @@ export const QuoteCalculator: React.FC = () => {
 
   const selectedSpeedConfig = SPEED_OPTIONS.find(s => s.id === selectedSpeed) || SPEED_OPTIONS[0];
 
-  const subtotalUsd = selectedServices.reduce((acc, id) => {
+  const subtotalEur = selectedServices.reduce((acc, id) => {
     const srv = INITIAL_CALC_SERVICES.find(s => s.id === id);
-    return acc + (srv ? srv.priceUsd : 0);
+    return acc + (srv ? srv.priceEur : 0);
   }, 0);
 
-  const speedSurchargeUsd = Math.round(subtotalUsd * (selectedSpeedConfig.multiplier - 1));
-  const totalUsd = subtotalUsd + speedSurchargeUsd;
-  const totalNio = Math.round(totalUsd * USD_TO_NIO);
+  const speedSurchargeEur = Math.round(subtotalEur * (selectedSpeedConfig.multiplier - 1));
+  const totalEur = subtotalEur + speedSurchargeEur;
 
   // 50% deposit and 50% final
-  const depositUsd = Math.round(totalUsd * 0.5);
-  const depositNio = Math.round(depositUsd * USD_TO_NIO);
+  const depositEur = Math.round(totalEur * 0.5);
 
   const handleSendWhatsApp = () => {
     if (selectedServices.length === 0) return;
@@ -53,8 +51,8 @@ export const QuoteCalculator: React.FC = () => {
       (customProjectName ? `🏷️ *Proyecto / Marca:* ${customProjectName}\n` : '') +
       `📌 *Servicios Seleccionados:*\n• ${serviceNames}\n\n` +
       `⚡ *Tiempo de Entrega:* ${selectedSpeedConfig.label} (${selectedSpeedConfig.timeline})\n` +
-      `💰 *Presupuesto Estimado:* $${totalUsd} USD (~C$ ${totalNio.toLocaleString()} NIO)\n` +
-      `💳 *Anticipo sugerido (50%):* $${depositUsd} USD (~C$ ${depositNio.toLocaleString()} NIO)\n\n` +
+      `💰 *Presupuesto Estimado:* ${totalEur.toLocaleString()} €\n` +
+      `💳 *Anticipo sugerido (50%):* ${depositEur.toLocaleString()} €\n\n` +
       `¿Podemos coordinar una llamada o reunión para revisar detalles y fecha de inicio?`;
 
     const url = `https://wa.me/${WA_PHONE_BABY_JONS}?text=${encodeURIComponent(message)}`;
@@ -70,13 +68,13 @@ export const QuoteCalculator: React.FC = () => {
       <div className="border-b border-slate-800 pb-6">
         <div className="inline-flex items-center gap-2 bg-amber-500/10 text-amber-400 text-xs font-bold px-3 py-1 rounded-full border border-amber-500/20 mb-3">
           <Coins className="w-3.5 h-3.5" />
-          <span>ESTIMADOR DE PROYECTO INTERACTIVO • NICARAGUA</span>
+          <span>ESTIMADOR DE PROYECTO INTERACTIVO • ZARAGOZA, ESPAÑA</span>
         </div>
         <h2 className="text-2xl sm:text-3xl font-extrabold text-white uppercase tracking-tight">
           Calcula tu Inversión en Segundos
         </h2>
         <p className="text-xs sm:text-sm text-slate-400 mt-1">
-          Elige los módulos estratégicos que tu marca necesita hoy. Los valores se expresan en Dólares ($USD) y Córdobas (C$ NIO).
+          Elige los módulos estratégicos que tu marca necesita hoy. Los valores se expresan en Euros (€).
         </p>
       </div>
 
@@ -94,7 +92,7 @@ export const QuoteCalculator: React.FC = () => {
               type="text"
               value={customProjectName}
               onChange={(e) => setCustomProjectName(e.target.value)}
-              placeholder="Ej: Café El Mirador / Boutique Ross / Dr. Smith"
+              placeholder="Ej: RestoBar El Tubo / Boutique Bella / Clínica Dental"
               className="w-full bg-slate-900 border border-slate-700 text-white text-xs rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-indigo-500 transition placeholder:text-slate-600"
             />
           </div>
@@ -146,11 +144,8 @@ export const QuoteCalculator: React.FC = () => {
                     </div>
 
                     <div className="pt-2 border-t border-slate-800/80 flex items-baseline justify-between">
-                      <span className="text-xs font-black text-amber-400">
-                        ${srv.priceUsd} USD
-                      </span>
-                      <span className="text-[10px] text-slate-500 font-semibold">
-                        ~C$ {(srv.priceUsd * USD_TO_NIO).toLocaleString()}
+                      <span className="text-sm font-black text-amber-400">
+                        {srv.priceEur} €
                       </span>
                     </div>
                   </div>
@@ -222,19 +217,19 @@ export const QuoteCalculator: React.FC = () => {
                 return (
                   <div key={srv.id} className="flex justify-between items-center text-slate-300 py-1 border-b border-slate-900">
                     <span className="truncate pr-2">• {srv.title}</span>
-                    <span className="font-bold text-white shrink-0">${srv.priceUsd} USD</span>
+                    <span className="font-bold text-white shrink-0">{srv.priceEur} €</span>
                   </div>
                 );
               })
             )}
 
-            {speedSurchargeUsd > 0 && (
+            {speedSurchargeEur > 0 && (
               <div className="flex justify-between items-center text-amber-400 font-semibold pt-2 border-t border-slate-800">
                 <span className="flex items-center gap-1">
                   <Clock className="w-3 h-3" />
                   <span>Aceleración {selectedSpeedConfig.label} ({selectedSpeedConfig.badge})</span>
                 </span>
-                <span>+${speedSurchargeUsd} USD</span>
+                <span>+{speedSurchargeEur} €</span>
               </div>
             )}
           </div>
@@ -243,27 +238,20 @@ export const QuoteCalculator: React.FC = () => {
           <div className="border-t border-slate-800 pt-4 space-y-3 bg-slate-900/50 p-4 rounded-xl border border-slate-800/80">
             <div className="flex justify-between items-baseline">
               <span className="text-xs text-slate-400 font-bold uppercase tracking-wider">
-                Total Estimado USD:
+                Total Estimado:
               </span>
               <span className="text-3xl font-black text-amber-400">
-                ${totalUsd.toLocaleString()} <span className="text-xs font-semibold text-slate-400">USD</span>
+                {totalEur.toLocaleString()} <span className="text-xs font-semibold text-slate-400">€</span>
               </span>
             </div>
 
-            <div className="flex justify-between items-baseline text-xs border-t border-slate-800/80 pt-2">
-              <span className="text-slate-400">Equivalente Córdobas:</span>
-              <span className="font-bold text-slate-200">
-                C$ {totalNio.toLocaleString()} NIO
-              </span>
-            </div>
-
-            <div className="flex justify-between items-baseline text-[11px] text-slate-400">
+            <div className="flex justify-between items-baseline text-[11px] text-slate-400 border-t border-slate-800/80 pt-2">
               <span className="flex items-center gap-1">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
                 <span>Anticipo 50% para inicio:</span>
               </span>
               <span className="font-bold text-emerald-400">
-                ${depositUsd} USD (C$ {depositNio.toLocaleString()})
+                {depositEur.toLocaleString()} €
               </span>
             </div>
           </div>
@@ -281,10 +269,7 @@ export const QuoteCalculator: React.FC = () => {
 
           <div className="space-y-1 text-center">
             <p className="text-[10px] text-slate-400">
-              Se enviará el desglose formal al WhatsApp personal de Baby Jons (+505 8766 9631) para agendar fecha de entrega.
-            </p>
-            <p className="text-[9px] text-slate-500">
-              Tasa oficial de referencia: $1 USD = C$ 36.60 NIO • Managua, Nicaragua
+              Se enviará el desglose formal al WhatsApp de Baby Jons (+34 631 920 479) para agendar fecha de entrega.
             </p>
           </div>
 
